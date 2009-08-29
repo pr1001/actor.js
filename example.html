@@ -1,0 +1,27 @@
+<html>
+	<head>
+		<title>actor.js Example</title>
+		<script type="text/javascript" src="actor.js"></script>
+    <script type="text/javascript">
+      // create a new Actor and specify the ActorWorker file to use
+      var talker = new Actor("example.js");
+      // start the Actor
+      talker.start();
+      // start another Actor to listen to the first Actor
+      // do not specify the ActorWorker file, which means that actorworker.js and the Web Worker doesn't do anything
+      var listener = new Actor();
+      // set the listener Actor's receive method so we can receive messages from the Actor it listens to
+      listener.receive = function(message) { console.log("The listener received the following message: " + message.data); }
+      // add the listener Actor to the first Actor
+      talker.addListener(listener);
+      // tell the first Actor to stop after 10 seconds
+      setTimeout(talker.createEnd(), 10000);
+    </script>
+	</head>
+	<body>
+    <h1>actor.js Example</h1>
+    <p>
+      Open FireBug to view the console output of a timer Actor sending a millisecond UNIX timestamp every second to its listener, an Actor which in turns writes the timestamp to the FireBug console upon receipt.
+    </p>
+	</body>
+</html>

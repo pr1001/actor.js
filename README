@@ -1,0 +1,8 @@
+actor.js is a wrapper for the Web Workers found in Firefox 3.5+. It is very loosely inspired by Scala's Actor library, though realistically all the two share at this time is a name and a desire to provide programmers with simply libraries to handle concurrency.
+
+Example:
+- See example.html for an example in which one Actor gets the current millisecond UNIX timestamp in its own thread and shares it with another Actor that is listening to it and which writes the timestamp it receives to the FireBug console.
+
+To Do:
+- Asynchronous messaging
+- Support for other browsers (ie support for string-only Web Worker messages)
